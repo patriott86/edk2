@@ -1,0 +1,42 @@
+[Defines]
+INF_VERSION                    = 0x00010005
+BASE_NAME                      = SelfDestroy
+FILE_GUID                      = 12345678-1234-1234-1234-123456789012
+MODULE_TYPE                    = UEFI_APPLICATION
+VERSION_STRING                 = 1.0
+ENTRY_POINT                    = UefiMain
+
+[Defines]
+  FILE_NAME = SelfDestroy.efi
+
+[Sources]
+    SelfDestroy.c
+
+[Packages]
+    MdePkg/MdePkg.dec
+    MdeModulePkg/MdeModulePkg.dec
+
+
+[LibraryClasses]
+    UefiApplicationEntryPoint
+    UefiLib
+    PrintLib
+    DebugLib
+    BaseLib
+    PcdLib
+    BaseMemoryLib
+    RegisterFilterLib
+    MemoryAllocationLib
+    UefiDevicePathLib
+    UefiBootServicesTableLib
+    DevicePathLib
+    UefiRuntimeServicesTableLib
+    
+[Protocols]
+  gEfiBlockIoProtocolGuid
+  gEfiGraphicsOutputProtocolGuid
+  gEfiSimpleTextInProtocolGuid
+  
+  
+  
+  

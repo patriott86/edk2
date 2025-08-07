@@ -1,0 +1,88 @@
+## @file
+#  Sample UEFI Application Reference EDKII Module.
+#
+#  This is a sample shell application that will print "UEFI Hello World!" to the
+#  UEFI Console based on PCD setting.
+#
+#  It demos how to use EDKII PCD mechanism to make code more flexible.
+#
+#  Copyright (c) 2008 - 2018, Intel Corporation. All rights reserved.<BR>
+#
+#  SPDX-License-Identifier: BSD-2-Clause-Patent
+#
+#
+##
+
+[Defines]
+  INF_VERSION                    = 0x00010005
+  BASE_NAME                      = ListAllDisks
+  MODULE_UNI_FILE                = ListAllDisks.uni
+  FILE_GUID                      = 6987936E-ED34-44db-AE97-1FA5E4ED2116
+  MODULE_TYPE                    = UEFI_APPLICATION
+  VERSION_STRING                 = 1.0
+  ENTRY_POINT                    = UefiMain
+
+#
+#  This flag specifies whether HII resource section is generated into PE image.
+#
+  UEFI_HII_RESOURCE_SECTION      = TRUE
+
+#
+# The following information is for reference only and not required by the build tools.
+#
+#  VALID_ARCHITECTURES           = IA32 X64 EBC
+#
+
+[Sources]
+  ListAllDisks.c
+  ListAllDisksStr.uni
+
+[Packages]
+  MdePkg/MdePkg.dec
+  MdeModulePkg/MdeModulePkg.dec
+  NetworkPkg/NetworkPkg.dec
+
+[LibraryClasses]
+  BaseMemoryLib
+  UefiApplicationEntryPoint
+  UefiLib
+  PcdLib
+  BaseLib
+  DebugLib
+  PrintLib
+  MemoryAllocationLib
+  UefiDevicePathLib
+  UefiBootServicesTableLib
+  DevicePathLib
+  UefiRuntimeServicesTableLib
+  BaseMemoryLib
+  DpcLib
+  UdpIoLib
+  NetLib
+  
+
+[FeaturePcd]
+  gEfiMdeModulePkgTokenSpaceGuid.PcdListAllDisksPrintEnable   ## CONSUMES
+
+[Pcd]
+  gEfiMdeModulePkgTokenSpaceGuid.PcdListAllDisksPrintString   ## SOMETIMES_CONSUMES
+  gEfiMdeModulePkgTokenSpaceGuid.PcdListAllDisksPrintTimes    ## SOMETIMES_CONSUMES
+
+[UserExtensions.TianoCore."ExtraFiles"]
+  ListAllDisksExtra.uni
+
+[Protocols]
+  gEfiBlockIoProtocolGuid        # BlockIo protokolünü dahil et
+  gEfiDiskIoProtocolGuid         # DiskIo protokolünü dahil et
+  gEfiSimplePointerProtocolGuid
+  gEfiStorageSecurityCommandProtocolGuid
+  gEfiAtaPassThruProtocolGuid
+  gEfiScsiIoProtocolGuid    
+  gEfiDevicePathProtocolGuid
+  gEfiUsbIoProtocolGuid
+  gEfiScsiPassThruProtocolGuid
+  gEfiSdMmcPassThruProtocolGuid
+  gEfiNvmExpressPassThruProtocolGuid
+
+[Guids]
+  gEfiMdeModulePkgTokenSpaceGuid
