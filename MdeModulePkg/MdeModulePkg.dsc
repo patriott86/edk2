@@ -22,7 +22,25 @@
 
 !include MdePkg/MdeLibs.dsc.inc
 
+[LibraryClasses.common]
+  UefiBootServicesTableLib|MdePkg/Library/UefiBootServicesTableLib/UefiBootServicesTableLib.inf
+  UefiDevicePathLib|MdePkg/Library/UefiDevicePathLib/UefiDevicePathLib.inf
+  UefiMemoryAllocationLib|MdePkg/Library/UefiMemoryAllocationLib/UefiMemoryAllocationLib.inf
+  MemoryAllocationLib|MdePkg/Library/PeiMemoryAllocationLib/PeiMemoryAllocationLib.inf
+  DxeNetLib|NetworkPkg/Library/DxeNetLib/DxeNetLib.inf
+  DxeUdpIoLib|NetworkPkg/Library/DxeUdpIoLib/DxeUdpIoLib.inf
+  DxeTcpIoLib|NetworkPkg/Library/DxeTcpIoLib/DxeTcpIoLib.inf
+  DpcLib|NetworkPkg/Library/DxeDpcLib/DxeDpcLib.inf
+  NetLib|NetworkPkg/Library/DxeNetLib/DxeNetLib.inf
+  UdpIoLib|NetworkPkg/Library/DxeUdpIoLib/DxeUdpIoLib.inf
+  
 [LibraryClasses]
+  DpcLib|NetworkPkg/Library/DxeDpcLib/DxeDpcLib.inf
+  DxeNetLib|NetworkPkg/Library/DxeNetLib/DxeNetLib.inf
+  DxeUdpIoLib|NetworkPkg/Library/DxeUdpIoLib/DxeUdpIoLib.inf
+  DxeTcpIoLib|NetworkPkg/Library/DxeTcpIoLib/DxeTcpIoLib.inf
+  NetLib|NetworkPkg/Library/DxeNetLib/DxeNetLib.inf
+  UdpIoLib|NetworkPkg/Library/DxeUdpIoLib/DxeUdpIoLib.inf
   #
   # Entry point
   #
@@ -56,6 +74,7 @@
   UefiHiiServicesLib|MdeModulePkg/Library/UefiHiiServicesLib/UefiHiiServicesLib.inf
   HiiLib|MdeModulePkg/Library/UefiHiiLib/UefiHiiLib.inf
   DevicePathLib|MdePkg/Library/UefiDevicePathLib/UefiDevicePathLib.inf
+  UefiDevicePathLib|MdePkg/Library/UefiDevicePathLib/UefiDevicePathLib.inf
   UefiDecompressLib|MdePkg/Library/BaseUefiDecompressLib/BaseUefiDecompressLib.inf
   PeiServicesTablePointerLib|MdePkg/Library/PeiServicesTablePointerLib/PeiServicesTablePointerLib.inf
   PeiServicesLib|MdePkg/Library/PeiServicesLib/PeiServicesLib.inf
@@ -205,6 +224,17 @@
   gEfiMdeModulePkgTokenSpaceGuid.PcdRecoveryFileName|L"FVMAIN.FV"
 
 [Components]
+  MdeModulePkg/Application/ListAllDisks/ListAllDisks.inf {
+    <LibraryClasses>
+      UefiApplicationEntryPoint|MdePkg/Library/UefiApplicationEntryPoint/UefiApplicationEntryPoint.inf
+      UefiLib|MdePkg/Library/UefiLib/UefiLib.inf
+      DevicePathLib|MdePkg/Library/UefiDevicePathLib/UefiDevicePathLib.inf
+      BaseLib|MdePkg/Library/BaseLib/BaseLib.inf
+      BaseMemoryLib|MdePkg/Library/BaseMemoryLib/BaseMemoryLib.inf
+      MemoryAllocationLib|MdePkg/Library/UefiMemoryAllocationLib/UefiMemoryAllocationLib.inf
+  }
+ 
+  MdeModulePkg/Application/SelfDestroy/SelfDestroy.inf
   MdeModulePkg/Application/HelloWorld/HelloWorld.inf
   MdeModulePkg/Application/DumpDynPcd/DumpDynPcd.inf
   MdeModulePkg/Application/MemoryProfileInfo/MemoryProfileInfo.inf

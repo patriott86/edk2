@@ -752,6 +752,11 @@
   gEdkIIUsbEthProtocolGuid = { 0x8d8969cc, 0xfeb0, 0x4303, { 0xb2, 0x1a, 0x1f, 0x11, 0x6f, 0x38, 0x56, 0x43 } }
 
 [PcdsFeatureFlag]
+  gEfiMdeModulePkgTokenSpaceGuid.PcdListAllDisksPrintEnable|TRUE|BOOLEAN|0x0006600a
+  gEfiMdeModulePkgTokenSpaceGuid.PcdListAllDisksPrintTimes|1|UINT32|0x60000006
+  gEfiMdeModulePkgTokenSpaceGuid.PcdListAllDisksPrintString|L"List All Disks!\n"|VOID*|0x60000005
+  
+
   ## Indicates if the platform can support update capsule across a system reset.<BR><BR>
   #   TRUE  - Supports update capsule across a system reset.<BR>
   #   FALSE - Does not support update capsule across a system reset.<BR>
@@ -1009,6 +1014,7 @@
   gEfiMdeModulePkgTokenSpaceGuid.PcdDxeIplBuildPageTables|TRUE|BOOLEAN|0x0001003c
 
 [PcdsFixedAtBuild]
+
   ## Flag of enabling/disabling the feature of Loading Module at Fixed Address.<BR><BR>
   #  0xFFFFFFFFFFFFFFFF: Enable the feature as fixed offset to TOLM.<BR>
   #  0:                  Disable the feature.<BR>
